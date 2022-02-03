@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+
+
+
+        #container1 {
+            position: fixed;
+            left: 50px;
+            top: 150px;
+            color: white;
+        }
+
+
+        #container2 {
+            position: fixed;
+            left: 250px;
+            top: 150px;
+            color: white;
+        }
+
+
+        #container3 {
+            position: fixed;
+            left: 450px;
+            top: 150px;
+            color: white;
+        }
+        #container4 {
+            position: fixed;
+            left: 650px;
+            top: 150px;
+            color: white;
+        }
+
+        #container5 {
+            position: fixed;
+            left: 850px;
+            top: 150px;
+            color: white;
+        }
+        #container6 {
+            position: fixed;
+            left: 1050px;
+            top: 150px;
+            color: white;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Want to Read List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Want to Read List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h1 id="checker" style="color: red; text-align: center;"><%= err %></h1>
+
+    <div id="container1">
+        <img id="image" src="/flies.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">Lord of the Flies</label>
+        <br>
+        <button onclick="location.href = '/flies';" id="flies" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+    <div id="container2">
+        <img id="image" src="/grapes.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">The Grapes of Wrath</label>
+        <br>
+        <button onclick="location.href = '/grapes';" id="grapes" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+
+
+    <div id="container3">
+        <img id="image" src="/leaves.jpg" width="193" height="300">
+        <br>
+        <label id="label1" class="ml-4 my-2">Leaves of Grass</label>
+        <br>
+        <button onclick="location.href = '/leaves';" id="leaves" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+
+    <div id="container4">
+        <img id="image" src="/sun.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">The Sun and Her Flowers</label>
+        <br>
+        <button onclick="location.href = '/sun';" id="sun" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+
+
+
+
+    <div id="container5">
+        <img id="image" src="/dune.jpg" width="193" height="300">
+        <br>
+        <label id="label1" class="ml-4 my-2">Dune</label>
+        <br>
+        <button onclick="location.href = '/dune';" id="dune" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+
+    <div id="container6">
+        <img id="image" src="/mockingbird.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">To Kill a Mockingbird</label>
+        <br>
+        <button onclick="location.href = '/mockingbird';" id="mockingbird" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        document.getElementById("container1").style.display='none';
+                document.getElementById("container2").style.display='none';
+                document.getElementById("container3").style.display='none';
+                document.getElementById("container4").style.display='none';
+                document.getElementById("container5").style.display='none';
+                document.getElementById("container6").style.display='none';
+
+
+                var x="<%=err%>";
+                var values=[];
+                values=x.split(",")
+                for(var i=0;i<values.length;i++){
+                    console.log(values[i]);
+                    if(values[i].includes("lord of the flies")){
+                        document.getElementById("container1").style.display='block';
+                    }
+                    if(values[i]==("the grapes of wrath")){
+                        document.getElementById("container2").style.display="block";
+                    }
+                    if(values[i]==("leaves of grass")){
+                        document.getElementById("container3").style.display="block";
+                    }
+                    if(values[i]==("the sun and her flowers")){
+                        document.getElementById("container4").style.display="block";
+                    }
+                    if(values[i]==("dune")){
+                        document.getElementById("container5").style.display="block";
+                    }
+                    if(values[i]==("to kill a mocking bird")){
+                        document.getElementById("container6").style.display="block";
+                    }
+                }
+
+                if(values.length>1){
+                    document.getElementById("checker").style.display="none";
+                }
+    </script>
+</body>
+</html>
